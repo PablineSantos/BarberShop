@@ -61,7 +61,7 @@ public class Main {
         usuarios = usuarioDAO.selectAll();
         usuarioDAO.delete(tiago);
         usuarios = usuarioDAO.selectAll();
-         System.out.println("pabline ");
+         
         
         
         

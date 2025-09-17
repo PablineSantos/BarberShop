@@ -1,0 +1,38 @@
+[1mdiff --git a/src/main/java/Model/Client.java b/src/main/java/Model/Client.java[m
+[1mindex 7916605..57f81e9 100644[m
+[1m--- a/src/main/java/Model/Client.java[m
+[1m+++ b/src/main/java/Model/Client.java[m
+[36m@@ -50,4 +50,5 @@[m [mpublic class Client extends Person{[m
+     }[m
+     [m
+     [m
+[32m+[m[41m    [m
+ }[m
+[1mdiff --git a/src/main/java/View/Login.form b/src/main/java/View/Login.form[m
+[1mindex af823ea..2cbd310 100644[m
+[1m--- a/src/main/java/View/Login.form[m
+[1m+++ b/src/main/java/View/Login.form[m
+[36m@@ -58,6 +58,11 @@[m
+       </Constraints>[m
+     </Component>[m
+     <Component class="javax.swing.JTextField" name="TextUsuario">[m
+[32m+[m[32m      <Properties>[m
+[32m+[m[32m        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">[m
+[32m+[m[32m          <Border info="null"/>[m
+[32m+[m[32m        </Property>[m
+[32m+[m[32m      </Properties>[m
+       <Events>[m
+         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextUsuarioActionPerformed"/>[m
+       </Events>[m
+[1mdiff --git a/src/main/java/View/Login.java b/src/main/java/View/Login.java[m
+[1mindex 27732a0..1de9219 100644[m
+[1m--- a/src/main/java/View/Login.java[m
+[1m+++ b/src/main/java/View/Login.java[m
+[36m@@ -58,6 +58,7 @@[m [mpublic class Login extends javax.swing.JFrame {[m
+         LabelUsuario.setText("Usuario");[m
+         getContentPane().add(LabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, -1, -1));[m
+ [m
+[32m+[m[32m        TextUsuario.setBorder(null);[m
+         TextUsuario.addActionListener(new java.awt.event.ActionListener() {[m
+             public void actionPerformed(java.awt.event.ActionEvent evt) {[m
+                 TextUsuarioActionPerformed(evt);[m
