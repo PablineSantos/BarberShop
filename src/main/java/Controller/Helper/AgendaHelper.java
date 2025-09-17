@@ -5,9 +5,9 @@
  */
 package Controller.Helper;
 
-import Model.Agendamento;
-import Model.Cliente;
-import Model.Servico;
+import Model.Scheduling;
+import Model.Client;
+import Model.Service;
 import View.Agenda;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -26,7 +26,7 @@ public class AgendaHelper implements IHelper{
     }
     
     
-    public void preencherTabela(ArrayList<Agendamento> agendamentos){
+    public void preencherTabela(ArrayList<Scheduling> agendamentos){
         
         //Tabela tambem funciona com MVC precisamos pegar o mode da tabela
         DefaultTableModel tableModel = (DefaultTableModel) view.getTableAgendamentos().getModel();
@@ -34,7 +34,7 @@ public class AgendaHelper implements IHelper{
         
         //Percorrer a lista preenchendo o tableModel
         
-        for (Agendamento agendamento : agendamentos) {
+        for (Scheduling agendamento : agendamentos) {
             
             tableModel.addRow(new Object[]{
                 agendamento.getId(),
@@ -50,31 +50,31 @@ public class AgendaHelper implements IHelper{
         
     }
     
-    public void preencherClientes(ArrayList<Cliente> clientes){
+    public void preencherClientes(ArrayList<Client> clientes){
         
         DefaultComboBoxModel comboBoxmodel = (DefaultComboBoxModel) view.getJComboBoxCliente().getModel();
         
-        for (Cliente cliente : clientes) {
+        for (Client cliente : clientes) {
             comboBoxmodel.addElement(cliente); //aqui esta a sacada adicionar cliente e nao cliente getnome()          
         }  
     }
 
-    public void preencherServicos(ArrayList<Servico> servicos) {
+    public void preencherServicos(ArrayList<Service> servicos) {
         
         DefaultComboBoxModel comboBoxmodel = (DefaultComboBoxModel) view.getJComboBoxServico().getModel();
         
-        for (Servico servico : servicos) {
+        for (Service servico : servicos) {
             comboBoxmodel.addElement(servico);
         }
         
     }
 
-    public Servico obterServico() {
-        return (Servico) view.getJComboBoxServico().getSelectedItem();
+    public Service obterServico() {
+        return (Service) view.getJComboBoxServico().getSelectedItem();
     }
     
-    public Cliente obterCliente(){
-        return (Cliente) view.getJComboBoxCliente().getSelectedItem();
+    public Client obterCliente(){
+        return (Client) view.getJComboBoxCliente().getSelectedItem();
     }
 
     public void setarValor(float valor) {
@@ -83,12 +83,12 @@ public class AgendaHelper implements IHelper{
 
     
     @Override
-    public Agendamento obterModelo() {
+    public Scheduling obterModelo() {
         
         String idString = view.getTextId().getText();
         int id = Integer.parseInt(idString);
-        Cliente cliente = obterCliente();
-        Servico servico = obterServico();
+        Client cliente = obterCliente();
+        Service servico = obterServico();
         String valorString = view.getTextValor().getText();
         float valor = Float.parseFloat(valorString);
         String data = view.getTextFormatedData().getText();
@@ -96,7 +96,7 @@ public class AgendaHelper implements IHelper{
         String dataHora = data + " " + hora;
         String observacao = view.getTextObservacao().getText();
         
-        Agendamento agendamento = new Agendamento(id, cliente, servico, valor, dataHora, observacao);
+        Scheduling agendamento = new Scheduling(id, cliente, servico, valor, dataHora, observacao);
         return agendamento;
         
     }

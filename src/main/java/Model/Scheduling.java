@@ -15,16 +15,16 @@ import java.util.logging.Logger;
  *
  * @author tiago
  */
-public class Agendamento {
+public class Scheduling {
     
     private int id;
-    Cliente cliente;
-    Servico servico;
+    Client cliente;
+    Service servico;
     float valor;
     Date data;
     String observacao;
 
-    public Agendamento(int id, Cliente cliente, Servico servico, float valor, String data) {
+    public Scheduling(int id, Client cliente, Service servico, float valor, String data) {
         this.id = id;
         this.cliente = cliente;
         this.servico = servico;
@@ -32,11 +32,11 @@ public class Agendamento {
         try {
             this.data = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(data);
         } catch (ParseException ex) {
-            Logger.getLogger(Agendamento.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Scheduling.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public Agendamento(int id, Cliente cliente, Servico servico, float valor, String data, String observacao)
+    public Scheduling(int id, Client cliente, Service servico, float valor, String data, String observacao)
     {
         this(id, cliente, servico, valor, data);
         this.observacao = observacao;
@@ -50,19 +50,19 @@ public class Agendamento {
         this.id = id;
     }
     
-    public Cliente getCliente() {
+    public Client getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(Client cliente) {
         this.cliente = cliente;
     }
 
-    public Servico getServico() {
+    public Service getServico() {
         return servico;
     }
 
-    public void setServico(Servico servico) {
+    public void setServico(Service servico) {
         this.servico = servico;
     }
 

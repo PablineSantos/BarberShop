@@ -6,13 +6,13 @@
 package Controller;
 
 import Controller.Helper.AgendaHelper;
-import Model.Agendamento;
-import Model.Cliente;
-import Model.DAO.AgendamentoDAO;
-import Model.DAO.ClienteDAO;
-import Model.DAO.ServicoDAO;
-import Model.Servico;
-import Service.Correio;
+import Model.Scheduling;
+import Model.Client;
+import Model.DAO.SchedulingDAO;
+import Model.DAO.ClientDAO;
+import Model.DAO.ServiceDAO;
+import Model.Service;
+import Service.Mail;
 import View.Agenda;
 import java.util.ArrayList;
 
@@ -33,8 +33,8 @@ public class AgendaController {
     public void atualizaTabela(){
     
         //Buscar Lista com agendamentos do banco de dados
-        AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
-        ArrayList<Agendamento> agendamentos = agendamentoDAO.selectAll();//depurar aqui
+        SchedulingDAO agendamentoDAO = new SchedulingDAO();
+        ArrayList<Scheduling> agendamentos = agendamentoDAO.selectAll();//depurar aqui
         
         //Exibir essa lista na view
         helper.preencherTabela(agendamentos);
@@ -42,8 +42,8 @@ public class AgendaController {
     
     public void atualizaClientes(){
         //Buscar Clientes do banco
-        ClienteDAO clienteDAO = new ClienteDAO();
-        ArrayList<Cliente> clientes = clienteDAO.selectAll();
+        ClientDAO clienteDAO = new ClientDAO();
+        ArrayList<Client> clientes = clienteDAO.selectAll();
         
         //Exibir clientes no combobox cliente
         helper.preencherClientes(clientes);
@@ -52,25 +52,25 @@ public class AgendaController {
     public void atualizaServicos(){
     
         //Buscar Servicos do Banco
-        ServicoDAO servicoDAO = new ServicoDAO();
-        ArrayList<Servico> servicos = servicoDAO.selectAll();
+        ServiceDAO servicoDAO = new ServiceDAO();
+        ArrayList<Service> servicos = servicoDAO.selectAll();
         
-        //Exibir Servicos na combobox Servico
+        //Exibir Servicos na combobox Service
         helper.preencherServicos(servicos);
     }
 
     public void atualizaValor() {
-        Servico servico = helper.obterServico();
+        Service servico = helper.obterServico();
         helper.setarValor(servico.getValor());
     }
 
     public void agendar() {
         
-        //Buscar Objeto Agendamento da Tela
-        Agendamento agendamento = helper.obterModelo();
+        //Buscar Objeto Scheduling da Tela
+        Scheduling agendamento = helper.obterModelo();
         
         //Salvar no banco de dados
-        AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
+        SchedulingDAO agendamentoDAO = new SchedulingDAO();
         agendamentoDAO.insert(agendamento);
         
         //atualizar Tabela
@@ -79,7 +79,7 @@ public class AgendaController {
         helper.limparTela();
        
         //notifica cliente por email
-        Correio correio = new Correio();
+        Mail correio = new Mail();
         correio.NotificarPorEmail(agendamento);
     }
     

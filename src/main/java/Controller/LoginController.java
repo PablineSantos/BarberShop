@@ -6,11 +6,11 @@
 package Controller;
 
 import Controller.Helper.LoginHelper;
-import Model.DAO.Banco;
-import Model.DAO.UsuarioDAO;
-import Model.Usuario;
+import Model.DAO.Database;
+import Model.DAO.UserDAO;
+import Model.User;
 import View.Login;
-import View.MenuPrincipal;
+import View.MainMenu;
 
 /**
  *
@@ -24,22 +24,22 @@ public class LoginController {
     public LoginController(Login view) {
         this.view = view;
         this.helper = new LoginHelper(view);
-        Banco.inicia(); //comando para iniciar o banco de dados
+        Database.inicia(); //comando para iniciar o banco de dados
     }
     
     public void entrarNoSistema(){
     
-        //Pegar Usuario da View        
-        Usuario usuarioNaoAutenticado = helper.obterModelo(); //depurar aqui
+        //Pegar User da View        
+        User usuarioNaoAutenticado = helper.obterModelo(); //depurar aqui
         
-        //Pesquisa Usuario no Banco
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Usuario usuarioAutenticado = usuarioDAO.selectPorNomeESenha(usuarioNaoAutenticado);
+        //Pesquisa User no Database
+        UserDAO usuarioDAO = new UserDAO();
+        User usuarioAutenticado = usuarioDAO.selectPorNomeESenha(usuarioNaoAutenticado);
         
         //Se o usuario da view tiver mesmo usuario e senha que o usuario vindo do banco direcionar para menu principal
         if(usuarioAutenticado != null){
             
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            MainMenu menuPrincipal = new MainMenu();
             menuPrincipal.setVisible(true);
             this.view.dispose(); //fecha a view atual
         }else{

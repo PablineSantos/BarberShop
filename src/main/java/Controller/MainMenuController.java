@@ -6,17 +6,17 @@
 package Controller;
 
 import View.Agenda;
-import View.MenuPrincipal;
+import View.MainMenu;
 
 /**
  *
  * @author tiago
  */
-public class MenuPrincipalController {
+public class MainMenuController {
 
-    private final MenuPrincipal view;
+    private final MainMenu view;
 
-    public MenuPrincipalController(MenuPrincipal view) {
+    public MainMenuController(MainMenu view) {
         this.view = view;
     }
     

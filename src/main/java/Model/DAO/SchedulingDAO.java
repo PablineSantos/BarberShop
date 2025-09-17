@@ -5,24 +5,24 @@
  */
 package Model.DAO;
 
-import Model.Agendamento;
+import Model.Scheduling;
 import java.util.ArrayList;
 
 /**
  *
  * @author tiago
  */
-public class AgendamentoDAO {
+public class SchedulingDAO {
     
     /**
      * Insere um agendamento dentro do banco de dados
      * @param agendamento exige que seja passado um objeto do tipo agendamento
      */
-    public void insert(Agendamento agendamento){
+    public void insert(Scheduling agendamento){
           
         if(agendamento.getId() == 0){
             agendamento.setId(proximoId());
-            Banco.agendamento.add(agendamento);
+            Database.agendamento.add(agendamento);
         }
         
         
@@ -33,11 +33,11 @@ public class AgendamentoDAO {
      * @param agendamento
      * @return 
      */
-    public boolean update(Agendamento agendamento){
+    public boolean update(Scheduling agendamento){
         
-        for (int i = 0; i < Banco.agendamento.size(); i++) {
-            if(idSaoIguais(Banco.agendamento.get(i),agendamento)){
-                Banco.agendamento.set(i, agendamento);
+        for (int i = 0; i < Database.agendamento.size(); i++) {
+            if(idSaoIguais(Database.agendamento.get(i),agendamento)){
+                Database.agendamento.set(i, agendamento);
                 return true;
             }
         }
@@ -50,10 +50,10 @@ public class AgendamentoDAO {
      * @param agendamento
      * @return 
      */
-    public boolean delete(Agendamento agendamento){
-        for (Agendamento agendamentoLista : Banco.agendamento) {
+    public boolean delete(Scheduling agendamento){
+        for (Scheduling agendamentoLista : Database.agendamento) {
             if(idSaoIguais(agendamentoLista,agendamento)){
-                Banco.agendamento.remove(agendamentoLista);
+                Database.agendamento.remove(agendamentoLista);
                 return true;
             }
         }
@@ -64,8 +64,8 @@ public class AgendamentoDAO {
      * Retorna um arraylist com todos os agendamentos do banco de dados
      * @return uma lista com todos os registros do banco
      */
-    public ArrayList<Agendamento> selectAll(){
-        return Banco.agendamento;
+    public ArrayList<Scheduling> selectAll(){
+        return Database.agendamento;
     }
     
     /**
@@ -74,7 +74,7 @@ public class AgendamentoDAO {
      * @param agendamentoAComparar
      * @return verdadeiro caso os id forem iguais e falso se nao forem
      */
-    private boolean idSaoIguais(Agendamento agendamento, Agendamento agendamentoAComparar) {
+    private boolean idSaoIguais(Scheduling agendamento, Scheduling agendamentoAComparar) {
         return agendamento.getId() ==  agendamentoAComparar.getId();
     }
     
@@ -82,7 +82,7 @@ public class AgendamentoDAO {
         
         int maiorId = 0;
         
-        for (Agendamento agendamento : Banco.agendamento) {           
+        for (Scheduling agendamento : Database.agendamento) {           
            int id = agendamento.getId();
             
             if(maiorId < id){

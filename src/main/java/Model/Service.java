@@ -9,7 +9,7 @@ package Model;
  *
  * @author tiago
  */
-public class Servico {
+public class Service {
     
     private int id;
     private String descricao;
@@ -21,7 +21,7 @@ public class Servico {
      * @param descricao é o nome do servico por exemplo "corte", ou "barba"
      * @param valor é o valor padrao que o servico custa, o valor passado aqui será recomendado como preco desse servico
      */
-    public Servico(int id, String descricao, float valor) {
+    public Service(int id, String descricao, float valor) {
         this.id = id;
         this.descricao = descricao;
         this.valor = valor;

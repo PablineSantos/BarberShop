@@ -5,21 +5,21 @@
  */
 package Model.DAO;
 
-import Model.Usuario;
+import Model.User;
 import java.util.ArrayList;
 
 /**
  *
  * @author tiago
  */
-public class UsuarioDAO {
+public class UserDAO {
     
     /**
      * Insere um usuario dentro do banco de dados
      * @param usuario exige que seja passado um objeto do tipo usuario
      */
-    public void insert(Usuario usuario){
-        Banco.usuario.add(usuario);
+    public void insert(User usuario){
+        Database.usuario.add(usuario);
     }
     
     /**
@@ -27,11 +27,11 @@ public class UsuarioDAO {
      * @param usuario
      * @return 
      */
-    public boolean update(Usuario usuario){
+    public boolean update(User usuario){
         
-        for (int i = 0; i < Banco.usuario.size(); i++) {
-            if(idSaoIguais(Banco.usuario.get(i),usuario)){
-                Banco.usuario.set(i, usuario);
+        for (int i = 0; i < Database.usuario.size(); i++) {
+            if(idSaoIguais(Database.usuario.get(i),usuario)){
+                Database.usuario.set(i, usuario);
                 return true;
             }
         }
@@ -44,10 +44,10 @@ public class UsuarioDAO {
      * @param usuario
      * @return 
      */
-    public boolean delete(Usuario usuario){
-        for (Usuario usuarioLista : Banco.usuario) {
+    public boolean delete(User usuario){
+        for (User usuarioLista : Database.usuario) {
             if(idSaoIguais(usuarioLista,usuario)){
-                Banco.usuario.remove(usuarioLista);
+                Database.usuario.remove(usuarioLista);
                 return true;
             }
         }
@@ -58,17 +58,17 @@ public class UsuarioDAO {
      * Retorna um arraylist com todos os usuarios do banco de dados
      * @return uma lista com todos os registros do banco
      */
-    public ArrayList<Usuario> selectAll(){
-        return Banco.usuario;
+    public ArrayList<User> selectAll(){
+        return Database.usuario;
     }
     
     /**
      * Retorna um Objeto do tipo usuario se a funcao encontrar o usuario passado como parâmetro no banco, para considerar sao usado nome e senha
      * @param usuario
-     * @return Usuario encontrado no banco de dados
+     * @return User encontrado no banco de dados
      */
-    public Usuario selectPorNomeESenha(Usuario usuario){
-        for (Usuario usuarioLista : Banco.usuario) {
+    public User selectPorNomeESenha(User usuario){
+        for (User usuarioLista : Database.usuario) {
             if(nomeESenhaSaoIguais(usuarioLista,usuario)){
                 return usuarioLista;
             }
@@ -82,7 +82,7 @@ public class UsuarioDAO {
      * @param usuarioAPesquisar
      * @return verdadeiro caso sejam iguais e falso caso nao forem iguais
      */
-    private boolean nomeESenhaSaoIguais(Usuario usuario, Usuario usuarioAPesquisar) {
+    private boolean nomeESenhaSaoIguais(User usuario, User usuarioAPesquisar) {
         return usuario.getNome().equals(usuarioAPesquisar.getNome()) && usuario.getSenha().equals(usuarioAPesquisar.getSenha());
     }
 
@@ -92,7 +92,7 @@ public class UsuarioDAO {
      * @param usuarioAComparar
      * @return verdadeiro caso os id forem iguais e falso se nao forem
      */
-    private boolean idSaoIguais(Usuario usuario, Usuario usuarioAComparar) {
+    private boolean idSaoIguais(User usuario, User usuarioAComparar) {
         return usuario.getId() ==  usuarioAComparar.getId();
     }
     

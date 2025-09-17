@@ -5,22 +5,22 @@
  */
 package Model.DAO;
 
-import Model.Servico;
+import Model.Service;
 import java.util.ArrayList;
 
 /**
  *
  * @author tiago
  */
-public class ServicoDAO {
+public class ServiceDAO {
     
     
     /**
      * Insere um servico dentro do banco de dados
      * @param servico exige que seja passado um objeto do tipo servico
      */
-    public void insert(Servico servico){
-        Banco.servico.add(servico);
+    public void insert(Service servico){
+        Database.servico.add(servico);
     }
     
     /**
@@ -28,11 +28,11 @@ public class ServicoDAO {
      * @param servico
      * @return 
      */
-    public boolean update(Servico servico){
+    public boolean update(Service servico){
         
-        for (int i = 0; i < Banco.servico.size(); i++) {
-            if(idSaoIguais(Banco.servico.get(i),servico)){
-                Banco.servico.set(i, servico);
+        for (int i = 0; i < Database.servico.size(); i++) {
+            if(idSaoIguais(Database.servico.get(i),servico)){
+                Database.servico.set(i, servico);
                 return true;
             }
         }
@@ -45,10 +45,10 @@ public class ServicoDAO {
      * @param servico
      * @return 
      */
-    public boolean delete(Servico servico){
-        for (Servico servicoLista : Banco.servico) {
+    public boolean delete(Service servico){
+        for (Service servicoLista : Database.servico) {
             if(idSaoIguais(servicoLista,servico)){
-                Banco.servico.remove(servicoLista);
+                Database.servico.remove(servicoLista);
                 return true;
             }
         }
@@ -59,8 +59,8 @@ public class ServicoDAO {
      * Retorna um arraylist com todos os servicos do banco de dados
      * @return uma lista com todos os registros do banco
      */
-    public ArrayList<Servico> selectAll(){
-        return Banco.servico;
+    public ArrayList<Service> selectAll(){
+        return Database.servico;
     }
     
     /**
@@ -69,7 +69,7 @@ public class ServicoDAO {
      * @param servicoAComparar
      * @return verdadeiro caso os id forem iguais e falso se nao forem
      */
-    private boolean idSaoIguais(Servico servico, Servico servicoAComparar) {
+    private boolean idSaoIguais(Service servico, Service servicoAComparar) {
         return servico.getId() ==  servicoAComparar.getId();
     }
     

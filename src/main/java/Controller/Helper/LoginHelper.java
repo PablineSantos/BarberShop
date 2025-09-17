@@ -5,7 +5,7 @@
  */
 package Controller.Helper;
 
-import Model.Usuario;
+import Model.User;
 import View.Login;
 
 /**
@@ -21,16 +21,16 @@ public class LoginHelper implements IHelper{
     }
     
     @Override
-    public Usuario obterModelo(){
+    public User obterModelo(){
         
         String nome = view.getTextUsuario().getText();
         String senha = view.getTextSenha().getText();
-        Usuario modelo = new Usuario(0, nome, senha);
+        User modelo = new User(0, nome, senha);
         
         return modelo;
     }
     
-    public void setarModelo(Usuario modelo){
+    public void setarModelo(User modelo){
         String nome = modelo.getNome();
         String senha = modelo.getSenha();
         

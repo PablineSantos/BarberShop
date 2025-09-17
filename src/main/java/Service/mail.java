@@ -5,15 +5,15 @@
  */
 package Service;
 
-import Model.Agendamento;
+import Model.Scheduling;
 
 /**
  * Serviço Responsavel por manipulas as saidas de email ou notificacoes  do sistema
  * @author tiago
  */
-public class Correio {
+public class Mail {
     
-    public void NotificarPorEmail(Agendamento agendamento){
+    public void NotificarPorEmail(Scheduling agendamento){
     
         String emailFormatado = formatarEmail(agendamento);
         String destinatario = agendamento.getCliente().getEmail();
@@ -29,7 +29,7 @@ public class Correio {
      * @param agendamento
      * @return 
      */
-    private String formatarEmail(Agendamento agendamento) {
+    private String formatarEmail(Scheduling agendamento) {
         String nomeCliente = agendamento.getCliente().getNome();
         String servico = agendamento.getServico().getDescricao();
         String dataAgendamento = agendamento.getDataFormatada();

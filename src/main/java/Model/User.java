@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * Classe representa um usuario do sistema
  * @author tiago
  */
-public class Usuario extends Pessoa{
+public class User extends Person{
 
     private String senha;
     private String nivelAcesso;
@@ -32,19 +32,19 @@ public class Usuario extends Pessoa{
      * @param senha
      * @param nivelAcesso é o nível de acesso que a pessoa tem exemplo "Administrador" ou "Funcionario"
      */
-    public Usuario(int id, String nome, char sexo, String dataNascimento, String telefone, String email, String rg, String senha, String nivelAcesso) {
+    public User(int id, String nome, char sexo, String dataNascimento, String telefone, String email, String rg, String senha, String nivelAcesso) {
         super(id, nome, sexo, dataNascimento, telefone, email, rg);
         this.senha = senha;
         this.nivelAcesso = nivelAcesso;
     }
 
-    public Usuario(int id, String nome, String senha, String nivelAcesso) {
+    public User(int id, String nome, String senha, String nivelAcesso) {
         super(id, nome);
         this.senha = senha;
         this.nivelAcesso = nivelAcesso;
     }
     
-    public Usuario(int id, String nome, String senha) {
+    public User(int id, String nome, String senha) {
         super(id, nome);
         this.senha = senha;
     }

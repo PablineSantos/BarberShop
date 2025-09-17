@@ -11,18 +11,18 @@ import java.util.Date;
  * Classe referente aos clientes do negócio
  * @author tiago
  */
-public class Cliente extends Pessoa{
+public class Client extends Person{
     
     private String endereco;
     private String cep;
 
-    public Cliente(int id, String nome, String endereco, String cep) {
+    public Client(int id, String nome, String endereco, String cep) {
         super(id, nome);
         this.endereco = endereco;
         this.cep = cep;
     }
     
-    public Cliente(int id, String nome, char sexo, String dataNascimento, String telefone, String email, String rg, String endereco, String cep) {
+    public Client(int id, String nome, char sexo, String dataNascimento, String telefone, String email, String rg, String endereco, String cep) {
         super(id, nome, sexo, dataNascimento, telefone, email, rg);
         this.endereco = endereco;
         this.cep = cep;

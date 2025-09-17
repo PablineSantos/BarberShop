@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author tiago
  */
-abstract public class Pessoa {
+abstract public class Person {
     
     
     protected int id;
@@ -26,20 +26,20 @@ abstract public class Pessoa {
     protected String email;
     protected String rg;
 
-    public Pessoa(int id, String nome) {
+    public Person(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
     
 
-    public Pessoa(int id, String nome, char sexo, String dataNascimento, String telefone, String email, String rg) {
+    public Person(int id, String nome, char sexo, String dataNascimento, String telefone, String email, String rg) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
         try {
             this.dataNascimento = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);
         } catch (ParseException ex) {
-            Logger.getLogger(Pessoa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Person.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.telefone = telefone;
         this.email = email;
